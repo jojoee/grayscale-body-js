@@ -6,12 +6,12 @@ Automatically turn the site to grayscale (may be used for some purpose)
 [![grayscaleBody.js - screenshot 1](https://raw.githubusercontent.com/jojoee/grayscale-body-js/master/screenshot/screenshot-1.gif "grayscaleBody.js - screenshot 1")](http://jojoee.github.io/grayscale-body-js/)
 
 ## Install
-1: NPM
+1: npm
 ```
 1.1 Install npm
 1.2 Install package: `npm install --save grayscale-body-js`
 ```
-2: Bower
+2: bower
 ```
 2.1 Install npm
 2.2 Install bower: `npm install -g bower`
@@ -24,6 +24,18 @@ Automatically turn the site to grayscale (may be used for some purpose)
 3. Install global: `npm install -g gulp bower browser-sync`
 4. Install dependencies: `bower install && npm install`
 5. Start: `gulp` to build and `gulp watch` to dev
+
+## Usage
+```
+1. Init
+var option = {
+  switcherPosition: 'bottom-right', // string: top-left, top-right, bottom-left, bottom-right
+  isEnableSwitcher: true,           // boolean
+  isDebug: true,                    // boolean
+};
+
+var gsb = new GrayscaleBody(option);
+```
 
 ## Feature
 - Grayscale / Color switcher (for non-IE)
@@ -43,6 +55,8 @@ Automatically turn the site to grayscale (may be used for some purpose)
 - [ ] DocBlockr
 - [ ] Grayscale opacity customizer
 - [ ] Unit test
+- [ ] Separate utilities function into another files
+- [ ] Add callback event when switcher button's triggered
 - [ ] Add [.npmignore](https://docs.npmjs.com/misc/developers)
 - [ ] Implement [ci.testling.com](https://ci.testling.com/)
 - [ ] Add E2E testing script by [Nightwatch.js](http://nightwatchjs.org/)
