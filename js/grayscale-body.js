@@ -7,9 +7,13 @@ var GrayscaleBody = function(opt) {
   this.localStorageStateKey = 'gsbState';
   this.prevState;
   this.currentState;
-  this.option = opt;
- 
-  if (this.option.isDebug) console.log('================ gsb - option', this.option);
+  this.option;
+  this.userOption = opt;
+  this.defaultOption = {
+    switcherPosition: 'top-right',
+    isEnableSwitcher: true,
+    isDebug: false,
+  };
 
   /*================================================================ Util
    */
@@ -89,18 +93,21 @@ var GrayscaleBody = function(opt) {
   };
 
   this.init = function() {
+    // set option
+    this.option = Object.assign(this.defaultOption, this.userOption);
+    if (this.option.isDebug) console.log('================ gsb - option', this.option);
+
+    // start
     this.bodyEle = document.getElementsByTagName('body')[0];
 
-    if (this.isIe()) {
+    if (this.isIe() || !this.option.isEnableSwitcher) {
       this.bodyEle.className += (' ' + 'gsb-grayscale');
 
     } else {
       this.prevState = this.getCurrentStateFromLocalStorage();
       this.currentState = this.getCurrentStateFromLocalStorage();
       this.updateBodyCurrentState();
-
-      if (this.option.isEnableSwitcher) this.initSwitcher();
-      
+      this.initSwitcher();
 
       if (this.option.isDebug) {
         console.log('================ gsb - init');
