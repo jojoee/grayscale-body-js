@@ -27,7 +27,7 @@ Automatically turn the site to grayscale (may be used for some purpose)
 
 ## Usage
 ```
-1. Init
+// init
 var option = {
   switcherPosition: 'bottom-right', // string: top-left, top-right, bottom-left, bottom-right
   isEnableSwitcher: true,           // boolean
@@ -35,6 +35,11 @@ var option = {
 };
 
 var gsb = new GrayscaleBody(option);
+
+// event
+gsb.on('onSwitchersClicked', function() {
+  console.log('onSwitchersClicked - callback 1');
+});
 ```
 
 ## Feature
@@ -62,3 +67,6 @@ var gsb = new GrayscaleBody(option);
 - [ ] Add E2E testing script by [Nightwatch.js](http://nightwatchjs.org/)
 - [ ] Localization
 - [ ] Update `demo` page
+
+## Thank you
+- [ ] [Unsplash It](https://unsplash.it/)
