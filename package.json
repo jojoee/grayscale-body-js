@@ -1,0 +1,46 @@
+{
+  "name": "grayscale-body-js",
+  "version": "1.0.0",
+  "description": "Automatically turn the site to grayscale",
+  "main": "js/main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://jojoee@github.com/jojoee/grayscale-body-js.git"
+  },
+  "keywords": [
+    "grayscale",
+    "black",
+    "white",
+    "black",
+    "and",
+    "white",
+    "site",
+    "convert",
+    "conversion",
+    "CSS",
+    "CSS3",
+    "filter"
+  ],
+  "author": "Nathachai Thongniran <inid3a@gmail.com>",
+  "license": "GPL-2.0+",
+  "bugs": {
+    "url": "https://github.com/jojoee/grayscale-body-js/issues"
+  },
+  "homepage": "https://github.com/jojoee/grayscale-body-js#readme",
+  "dependencies": {
+    "browser-sync": "^2.14.0",
+    "gulp": "^3.9.1",
+    "chai": "^3.5.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "mocha": "^2.5.3"
+  },
+  "scripts": {
+    "prestart": "bower install && npm install",
+    "start": "gulp default",
+    "test": "mocha test --reporter spec --recursive",
+    "test.watch": "mocha test --reporter spec --recursive --watch"
+  }
+}

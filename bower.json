@@ -1,0 +1,35 @@
+{
+  "name": "grayscale-body-js",
+  "description": "Automatically turn the site to grayscale",
+  "main": "js/main.js",
+  "authors": [
+    "Nathachai Thongniran <inid3a@gmail.com>"
+  ],
+  "license": "GPL-2.0+",
+  "keywords": [
+    "grayscale",
+    "black",
+    "white",
+    "black",
+    "and",
+    "white",
+    "site",
+    "convert",
+    "conversion",
+    "CSS",
+    "CSS3",
+    "filter"
+  ],
+  "homepage": "https://github.com/jojoee/grayscale-body-js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "bower_components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    
+  }
+}
