@@ -53,10 +53,17 @@
     </div>
   </div>
 </div>
-<script>
-var gsbDebug = true;
-var gsbOption = '{"gsb_field_switcher_position": "top-right","gsb_field_custom_css": "","gsb_field_is_enabled": "1","gsb_field_is_enable_switcher":"1"}';
-</script>
 <script src="js/grayscale-body.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var option = {
+    switcherPosition: 'top-right',
+    isEnableSwitcher: true,
+    isDebug: true,
+  };
+
+  var gsb = new GrayscaleBody(option);
+});
+</script>
 </body>
 </html>

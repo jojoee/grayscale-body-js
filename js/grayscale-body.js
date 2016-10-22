@@ -1,10 +1,4 @@
-var gsbIsIE = function() {
-  var myNav = navigator.userAgent.toLowerCase();
-
-  return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
-};
-
-var GrayscaleBody = function() {
+var GrayscaleBody = function(opt) {
   this.bodyEle;
   this.bodyClassNamePrefix = 'gsb-';
   this.switcherEle;
@@ -13,7 +7,18 @@ var GrayscaleBody = function() {
   this.localStorageStateKey = 'gsbState';
   this.prevState;
   this.currentState;
-  this.option;
+  this.option = opt;
+ 
+  if (this.option.isDebug) console.log('================ gsb - option', this.option);
+
+  /*================================================================ Util
+   */
+  
+  this.isIe = function() {
+    var myNav = navigator.userAgent.toLowerCase();
+
+    return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
+  };
 
   /*================================================================ Local storage
    */
@@ -47,7 +52,7 @@ var GrayscaleBody = function() {
     swticherEle.id = swticherName;
     swticherEle.className = swticherName;
     swticherEle.classList.add(this.currentState);
-    swticherEle.classList.add(this.option.gsb_field_switcher_position);
+    swticherEle.classList.add(this.option.switcherPosition);
     swticherEle.onclick = function(event) {
       var newCurrentState = (self.currentState === self.grayscaleStateName) ?
         self.colorStateName :
@@ -69,7 +74,7 @@ var GrayscaleBody = function() {
       // set localStorage
       self.setCurrentStateToLocalStorage();
 
-      if (gsbDebug) {
+      if (self.option.isDebug) {
         console.log('================ gsb - switcher is clicked');
         console.log('self.prevState', self.prevState);
         console.log('self.currentState', self.currentState);
@@ -85,44 +90,26 @@ var GrayscaleBody = function() {
 
   this.init = function() {
     this.bodyEle = document.getElementsByTagName('body')[0];
-    this.prevState = this.getCurrentStateFromLocalStorage();
-    this.currentState = this.getCurrentStateFromLocalStorage();
-    this.option = JSON.parse(gsbOption);
 
-    this.updateBodyCurrentState();
-    this.initSwitcher();
+    if (this.isIe()) {
+      this.bodyEle.className += (' ' + 'gsb-grayscale');
 
-    if (gsbDebug) {
-      console.log('================ gsb - init');
-      console.log('this.prevState: ', this.prevState);
-      console.log('this.currentState: ', this.currentState);
+    } else {
+      this.prevState = this.getCurrentStateFromLocalStorage();
+      this.currentState = this.getCurrentStateFromLocalStorage();
+      this.updateBodyCurrentState();
+
+      if (this.option.isEnableSwitcher) this.initSwitcher();
+      
+
+      if (this.option.isDebug) {
+        console.log('================ gsb - init');
+        console.log('this.prevState: ', this.prevState);
+        console.log('this.currentState: ', this.currentState);
+      }
     }
   };
-}
 
-function iniGrayscaleBody() {
-  var gsb = new GrayscaleBody();
-
-  gsb.init();
-}
-
-function iniGrayscaleBodyUnsupportedBrowser() {
-  // hard code for unsupported browser
-  // `document.addEventListener`
-  var bodyEle = document.getElementsByTagName('body')[0];
-  bodyEle.className += (' ' + 'gsb-grayscale');
-}
-
-if (gsbIsIE()) {
-  iniGrayscaleBodyUnsupportedBrowser();
-
-} else {
-  try {
-    document.addEventListener('DOMContentLoaded', iniGrayscaleBody);
-
-  } catch (err) {
-    if (gsbDebug) console.log(err.message);
-
-    iniGrayscaleBodyUnsupportedBrowser();
-  }
+  // start
+  this.init();
 }
