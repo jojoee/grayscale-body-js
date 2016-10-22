@@ -9,6 +9,9 @@ var GrayscaleBody = function(opt) {
   this.currentState;
   this.option;
   this.userOption = opt;
+  this.callback = {
+    onSwitchersClicked: [],
+  };
   this.defaultOption = {
     switcherPosition: 'top-right',
     isEnableSwitcher: true,
@@ -39,6 +42,19 @@ var GrayscaleBody = function(opt) {
     return localStorage.setItem(this.localStorageStateKey, this.currentState);
   };
 
+  /*================================================================ Custom event
+   */
+
+  this.on = function(eventName, callback) {
+    var self = this;
+
+    if (eventName === 'onSwitchersClicked') {
+      if (typeof callback === 'function') {
+        this.callback.onSwitchersClicked.push(callback);
+      }
+    }
+  };
+  
   /*================================================================ Others
    */
 
@@ -83,6 +99,14 @@ var GrayscaleBody = function(opt) {
         console.log('self.prevState', self.prevState);
         console.log('self.currentState', self.currentState);
       }
+
+      // dispatch
+      var nEvents = self.callback.onSwitchersClicked.length,
+        i = 0;
+      
+      for (i = 0; i < nEvents; i++) {
+        self.callback.onSwitchersClicked[i]();
+      }
     };
 
     // add to body
@@ -119,4 +143,9 @@ var GrayscaleBody = function(opt) {
 
   // start
   this.init();
+
+  return {
+    on: this.on,
+    callback: this.callback
+  }
 }

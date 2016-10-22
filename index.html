@@ -56,11 +56,25 @@
 <script src="js/grayscale-body.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // init
   var option = {
     isDebug: true,
   };
 
   var gsb = new GrayscaleBody(option);
+
+  // event
+  gsb.on('onSwitchersClicked', function() {
+    console.log('onSwitchersClicked - callback 1');
+  });
+
+  gsb.on('onSwitchersClicked', function() {
+    console.log('onSwitchersClicked - callback 2');
+  });
+
+  gsb.on('onSwitchersClicked', function() {
+    console.log('onSwitchersClicked - callback 3');
+  });
 });
 </script>
 </body>
