@@ -147,5 +147,9 @@ var GrayscaleBody = function(opt) {
   return {
     on: this.on,
     callback: this.callback
-  }
+  };
+}
+
+if (typeof module !== 'undefined' && module.exports != null) {
+  exports = GrayscaleBody;
 }
