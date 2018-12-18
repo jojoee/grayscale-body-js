@@ -3,7 +3,7 @@
 
 Automatically turn the site to grayscale (may be used for some purpose)
 
-[![grayscaleBody.js - screenshot 1](https://raw.githubusercontent.com/jojoee/grayscale-body-js/master/screenshot/screenshot-1.gif "grayscaleBody.js - screenshot 1")](http://jojoee.github.io/grayscale-body-js/)
+[![grayscaleBody.js - screenshot 1](https://raw.githubusercontent.com/jojoee/grayscale-body-js/master/screenshot/screenshot-1.gif "grayscaleBody.js - screenshot 1")](http://jojoee.github.io/grayscale-body-js/) [![Greenkeeper badge](https://badges.greenkeeper.io/jojoee/grayscale-body-js.svg)](https://greenkeeper.io/)
 
 ## Install
 1: npm
